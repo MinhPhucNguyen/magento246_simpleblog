@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="blog_categories">
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" identity="true"
+                comment="Category Id"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Name"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Description"/>
+        <column xsi:type="int" name="status" nullable="true" comment="Status"/>
+        <column xsi:type="datetime" default="CURRENT_TIMESTAMP" name="created_at" nullable="false"
+                comment="Created at"/>
+        <column xsi:type="datetime" default="CURRENT_TIMESTAMP" name="updated_at" nullable="true"
+                comment="Updated at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+    </table>
+
+    <table name="blog_post">
+        <column xsi:type="int" name="blog_id" unsigned="true" nullable="false" identity="true" comment="Blog Id"/>
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" comment="Category Id"/>
+        <column xsi:type="text" name="title" nullable="false" comment="Title"/>
+        <column xsi:type="text" name="post_image" nullable="true" comment="Post Image"/>
+        <column xsi:type="text" name="full_content" nullable="true" comment="Full Content"/>
+        <column xsi:type="text" name="short_content" nullable="true" comment="Short Content"/>
+        <column xsi:type="text" name="author" nullable="true" comment="Author"/>
+        <column xsi:type="int" name="status" nullable="true" comment="Status"/>
+        <column xsi:type="timestamp" name="published_at" nullable="true" comment="Published At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TIGREN_BLOG_CATEGORIES_BLOG_POST" table="blog_post"
+                    column="category_id" referenceTable="blog_categories" referenceColumn="category_id"
+                    onDelete="CASCADE"/>
+    </table>
+
+    <table name="blog_image_list">
+        <column xsi:type="int" name="image_id" unsigned="true" nullable="false" identity="true" comment="Blog Id"/>
+        <column xsi:type="int" name="blog_id" unsigned="true" nullable="false" comment="Blog Id"/>
+        <column xsi:type="text" name="image" nullable="false" comment="Image"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="image_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TIGREN_BLOG_POST_BLOG_IMAGE_LIST" table="blog_image_list"
+                    column="blog_id" referenceTable="blog_post" referenceColumn="blog_id" onDelete="CASCADE"/>
+    </table>
+
+</schema>

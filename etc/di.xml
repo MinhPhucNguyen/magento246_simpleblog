@@ -1,0 +1,32 @@
+<?xml version="1.0"  ?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tigren_simpleblog_category_listing_data_source" xsi:type="string">
+                    Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
+                </item>
+                <item name="tigren_simpleblog_category_form_data_source" xsi:type="string">
+                    Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">blog_categories</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Tigren\SimpleBlog\Model\ResourceModel\Category
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

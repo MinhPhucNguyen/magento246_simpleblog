@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_SimpleBlog::tigren_menu" title="Tigren Blog" translate="title" module="Tigren_SimpleBlog"
+             sortOrder="5" resource="Magento_Backend::content"/>
+        <add id="Tigren_SimpleBlog::blog_category" title="Category" translate="title" module="Tigren_SimpleBlog"
+             sortOrder="30" parent="Tigren_SimpleBlog::tigren_menu" action="simpleblog/category/index"
+             resource="Tigren_SimpleBlog::menu_item"/>
+        <add id="Tigren_SimpleBlog::blog_post" title="Blog Post" translate="title" module="Tigren_SimpleBlog"
+             sortOrder="30" parent="Tigren_SimpleBlog::tigren_menu" action="simpleblog/blog/index"
+             resource="Tigren_SimpleBlog::menu_item"/>
+        <add id="Tigren_SimpleBlog::blog_image" title="Blog Image" translate="title" module="Tigren_SimpleBlog"
+             sortOrder="30" parent="Tigren_SimpleBlog::tigren_menu" action="simpleblog/category/index"
+             resource="Tigren_SimpleBlog::menu_item"/>
+    </menu>
+</config>
