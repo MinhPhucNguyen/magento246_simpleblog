@@ -8,27 +8,32 @@
 
 namespace Tigren\SimpleBlog\Model\Category;
 
-namespace Tigren\SimpleBlog\Model\Category;
-
 use Tigren\SimpleBlog\Model\CategoryFactory;
 use Magento\Framework\Data\OptionSourceInterface;
 
 class Options implements OptionSourceInterface
 {
 
+    protected $categoryFactory;
+
+    public function __construct(CategoryFactory $categoryFactory)
+    {
+        $this->categoryFactory = $categoryFactory;
+    }
 
     public function toOptionArray()
     {
         $options = [];
-
-        $options = [
-            ['label' => __('Select...'), 'value' => '1'],
-            ['label' => __('Sport'), 'value' => '2'],
-            ['label' => __('Option 3'), 'value' => '3'],
-            ['label' => __('Option 4'), 'value' => '4'],
-            ['label' => __('Option 5'), 'value' => '5'],
-        ];
-
+        $categories = $this->categoryFactory->create()->getCollection();
+//        echo "<pre>";
+//        print_r($categories->getData());
+//        die();
+        foreach ($categories as $category) {
+            $options[] = [
+                'label' => $category->getName(),
+                'value' => $category->getCategoryId()
+            ];
+        }
 
         return $options;
 

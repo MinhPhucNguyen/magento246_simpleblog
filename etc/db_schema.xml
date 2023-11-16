@@ -34,7 +34,8 @@
         <column xsi:type="text" name="short_content" nullable="true" comment="Short Content"/>
         <column xsi:type="text" name="author" nullable="true" comment="Author"/>
         <column xsi:type="int" name="status" nullable="true" comment="Status"/>
-        <column xsi:type="timestamp" name="published_at" nullable="true" comment="Published At"/>
+        <column xsi:type="datetime" default="CURRENT_TIMESTAMP" name="published_at" nullable="true"
+                comment="Published at"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="blog_id"/>
         </constraint>

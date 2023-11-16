@@ -12,7 +12,9 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\UrlInterface;
@@ -36,8 +38,14 @@ class ImageUpload extends Action implements HttpPostActionInterface
         $this->mediaDirectory = $fileSystem->getDirectoryWrite(DirectoryList::MEDIA);
     }
 
+    /**
+     * @return ResponseInterface|ResultInterface
+     * @throws \Exception
+     */
     public function execute()
     {
+
+        //  trả về dữ liệu dạng json
         $jsonResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         try {
@@ -47,7 +55,7 @@ class ImageUpload extends Action implements HttpPostActionInterface
             $fileUploader->setAllowCreateFolders(true);
             $fileUploader->setFilesDispersion(false);
 
-            //New folder when upload image
+//          New folder when upload image if not exist
             $imagePath = 'simpleblog/blog/post_image/';
 
 //          Rename Image
