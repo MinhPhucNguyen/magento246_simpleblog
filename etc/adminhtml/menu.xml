@@ -17,8 +17,5 @@
         <add id="Tigren_SimpleBlog::blog_post" title="Blog Post" translate="title" module="Tigren_SimpleBlog"
              sortOrder="30" parent="Tigren_SimpleBlog::tigren_menu" action="simpleblog/blog/index"
              resource="Tigren_SimpleBlog::menu_item"/>
-        <add id="Tigren_SimpleBlog::blog_image" title="Blog Image" translate="title" module="Tigren_SimpleBlog"
-             sortOrder="30" parent="Tigren_SimpleBlog::tigren_menu" action="simpleblog/category/index"
-             resource="Tigren_SimpleBlog::menu_item"/>
     </menu>
 </config>

@@ -9,40 +9,24 @@
 
 namespace Tigren\SimpleBlog\Controller\Adminhtml\Category;
 
-use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
-use Tigren\SimpleBlog\Model\CategoryFactory;
+use Magento\Backend\App\Action;
 
-class Index extends Action
+class Edit extends Action
 {
-
-    /**
-     * @var PageFactory
-     */
     protected $pageFactory = false;
 
-    /**
-     * @param Context $context
-     * @param PageFactory $pageFactory
-     */
     public function __construct(Context $context, PageFactory $pageFactory)
     {
-        parent::__construct($context);
         $this->pageFactory = $pageFactory;
+        parent::__construct($context);
     }
 
-    /**
-     * @return ResponseInterface|ResultInterface|Page
-     */
     public function execute()
     {
         $resultPage = $this->pageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend(__('Category Blog'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Edit Category'));
         return $resultPage;
     }
 }

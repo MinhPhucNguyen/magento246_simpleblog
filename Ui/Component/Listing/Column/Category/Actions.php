@@ -18,6 +18,16 @@ class Actions extends Column
 {
     protected $urlBuilder;
 
+    private const  URL_PATH_EDIT = 'simpleblog/category/edit';
+    private const URL_PATH_DELETE = 'simpleblog/category/delete';
+
+    /**
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param UrlInterface $urlBuilder
+     * @param array $components
+     * @param array $data
+     */
     public function __construct(
         ContextInterface   $context,
         UiComponentFactory $uiComponentFactory,
@@ -30,27 +40,49 @@ class Actions extends Column
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
+    /**
+     * @param array $dataSource
+     * @return array
+     */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
                 if (isset($item['category_id'])) {
-                    $viewUrlPath = $this->getData('config/viewUrlPath');
-                    $urlEntityParamName = $this->getData('config/urlEntityParamName');
-                    $item[$this->getData('name')] = [
-                        'edit' => [
-                            'href' => $this->urlBuilder->getUrl(
-                                $viewUrlPath,
-                                [
-                                    $urlEntityParamName => $item['category_id'],
-                                ]
-                            ),
-                            'label' => __('Edit'),
+                    $name = $this->getData('name');
+                    $item[$name]['edit'] = [
+                        'href' => $this->getEditUrl($item),
+                        'label' => __('Edit'),
+                    ];
+                    $item[$name]['delete'] = [
+                        'href' => $this->getDeleteUrl($item),
+                        'label' => __('Delete'),
+                        'confirm' => [
+                            'title' => __('Delete %1', $item['category_id']),
+                            'message' => __('Are you sure you wan\'t to delete a %1 record?', $item['category_id']),
                         ],
                     ];
                 }
             }
         }
         return $dataSource;
+    }
+
+    /**
+     * @param array $item
+     * @return string
+     */
+    private function getEditUrl(array $item)
+    {
+        return $this->urlBuilder->getUrl(self::URL_PATH_EDIT, ['id' => $item['category_id']]);
+    }
+
+    /**
+     * @param array $item
+     * @return string
+     */
+    private function getDeleteUrl(array $item)
+    {
+        return $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['id' => $item['category_id']]);
     }
 }

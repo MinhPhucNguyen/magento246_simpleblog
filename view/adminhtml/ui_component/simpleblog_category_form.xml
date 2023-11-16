@@ -30,7 +30,7 @@
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">Tigren\SimpleBlog\Block\Adminhtml\Category\Edit\BackButton</item>
             <item name="reset" xsi:type="string">Tigren\SimpleBlog\Block\Adminhtml\Category\Edit\ResetButton</item>
-            <!--            <item name="delete" xsi:type="string">Tigren\SimpleBlog\Block\Adminhtml\Category\Edit\DeleteButton</item>-->
+            <item name="delete" xsi:type="string">Tigren\SimpleBlog\Block\Adminhtml\Category\Edit\DeleteButton</item>
             <item name="save" xsi:type="string">Tigren\SimpleBlog\Block\Adminhtml\Category\Edit\SaveButton</item>
         </item>
 
@@ -89,19 +89,19 @@
             </formElements>
         </field>
 
-        <field name="category_name">
+        <field name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Category Name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">category</item>
-                    <item name="dataScope" xsi:type="string">category_name</item>
+                    <item name="dataScope" xsi:type="string">name</item>
                 </item>
             </argument>
         </field>
 
-        <field name="category_description">
+        <field name="description">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="formElement" xsi:type="string">textarea</item>

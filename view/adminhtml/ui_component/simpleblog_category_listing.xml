@@ -67,7 +67,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="tigren_simpleblog/blog/massDelete"/>
+                        <item name="url" xsi:type="url" path="simpleblog/category/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete Category</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
@@ -153,6 +153,7 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="label" xsi:type="string" translate="true">Created At</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
                 </item>
             </argument>
         </column>
@@ -164,17 +165,18 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="label" xsi:type="string" translate="true">Updated At</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
                 </item>
             </argument>
         </column>
 
         <!--Add new colume name: action-->
-        <actionsColumn name="action" class="Tigren\SimpleBlog\Ui\Component\Listing\Column\Category\Actions">
+        <actionsColumn name="actions" class="Tigren\SimpleBlog\Ui\Component\Listing\Column\Category\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">entity_id</item>
+                    <item name="indexField" xsi:type="string">category_id</item>
                     <item name="viewUrlPath" xsi:type="string">blogmanager/manage/delete</item>
-                    <item name="urlEntityParamName" xsi:type="string">id</item>
+                    <item name="urlEntityParamName" xsi:type="string">category_id</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                 </item>
             </argument>
