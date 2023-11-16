@@ -6,7 +6,9 @@
             "description": true,
             "status": true,
             "create_at": true,
-            "update_at": true
+            "update_at": true,
+            "created_at": true,
+            "updated_at": true
         },
         "constraint": {
             "PRIMARY": true
@@ -22,7 +24,8 @@
             "short_content": true,
             "author": true,
             "status": true,
-            "published_at": true
+            "published_at": true,
+            "image_list": true
         },
         "constraint": {
             "PRIMARY": true,

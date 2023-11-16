@@ -1,4 +1,4 @@
-<?xml version="1.0"  encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
   ~ @author    Tigren Solutions <info@tigren.com>
   ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
@@ -12,20 +12,20 @@
 
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">
-                simpleblog_category_listing.tigren_simpleblog_category_listing_data_source
+                simpleblog_blog_listing.tigren_simpleblog_blog_listing_data_source
             </item>
             <item name="deps" xsi:type="string">
-                simpleblog_category_listing.tigren_simpleblog_category_listing_data_source
+                simpleblog_blog_listing.tigren_simpleblog_blog_listing_data_source
             </item>
         </item>
 
-        <item name="spinner" xsi:type="string">simpleblog_category_listing_columns</item>
+        <item name="spinner" xsi:type="string">simpleblog_blog_listing_columns</item>
 
         <!--        Creata New Category Button-->
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
-                <item name="label" xsi:type="string" translate="true">Add New Category</item>
+                <item name="label" xsi:type="string" translate="true">Add New Blog</item>
                 <item name="class" xsi:type="string">primary</item>
                 <item name="url" xsi:type="string">*/*/create</item>
             </item>
@@ -38,15 +38,15 @@
             <argument name="class" xsi:type="string">
                 Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
             </argument>
-            <argument name="name" xsi:type="string">tigren_simpleblog_category_listing_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">category_id</argument>
+            <argument name="name" xsi:type="string">tigren_simpleblog_blog_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">blog_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">category_id</item>
+                        <item name="indexField" xsi:type="string">blog_id</item>
                     </item>
                 </item>
             </argument>
@@ -67,9 +67,9 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="simpleblog/category/massDelete"/>
+                        <item name="url" xsi:type="url" path="simpleblog/blog/massDelete"/>
                         <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete Category</item>
+                            <item name="title" xsi:type="string" translate="true">Delete Blog</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
                                 selected items?
                             </item>
@@ -82,29 +82,30 @@
         <paging name="listing_paging"/>
     </listingToolbar>
 
-    <columns name="simpleblog_category_listing_columns">
+    <columns name="simpleblog_blog_listing_columns">
 
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">55</item>
-                    <item name="indexField" xsi:type="string">category_id</item>
+                    <item name="indexField" xsi:type="string">blog_id</item>
                 </item>
             </argument>
         </selectionsColumn>
 
-        <column name="category_id">
+        <column name="blog_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
                 </item>
             </argument>
         </column>
 
-        <column name="name">
+        <column name="category_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -113,12 +114,13 @@
                             <item name="required-entry" xsi:type="boolean">true</item>
                         </item>
                     </item>
-                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="label" xsi:type="string" translate="true">Category</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>
         </column>
 
-        <column name="description">
+        <column name="title">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -127,10 +129,88 @@
                             <item name="required-entry" xsi:type="boolean">true</item>
                         </item>
                     </item>
-                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
                 </item>
             </argument>
         </column>
+
+        <column name="post_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Post Image</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </column>
+
+
+        <column name="image_list">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Image List</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="full_content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Content</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="short_content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Short Content</item>
+                    <item name="sortOrder" xsi:type="number">100</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="author">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Author</item>
+                    <item name="sortOrder" xsi:type="number">120</item>
+                </item>
+            </argument>
+        </column>
+
 
         <column name="status">
             <argument name="data" xsi:type="array">
@@ -142,44 +222,23 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="sortOrder" xsi:type="number">500</item>
                 </item>
             </argument>
         </column>
 
-        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+        <column name="published_at" class="Magento\Ui\Component\Listing\Columns\Date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">dateRange</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
-                    <item name="label" xsi:type="string" translate="true">Created At</item>
-                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="label" xsi:type="string" translate="true">Published At</item>
+                    <item name="sortOrder" xsi:type="number">160</item>
                 </item>
             </argument>
         </column>
 
-        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">dateRange</item>
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
-                    <item name="dataType" xsi:type="string">date</item>
-                    <item name="label" xsi:type="string" translate="true">Updated At</item>
-                    <item name="sortOrder" xsi:type="number">40</item>
-                </item>
-            </argument>
-        </column>
 
-        <!--Add new colume name: action-->
-        <actionsColumn name="actions" class="Tigren\SimpleBlog\Ui\Component\Listing\Column\Category\Actions">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">category_id</item>
-                    <item name="viewUrlPath" xsi:type="string">blogmanager/manage/delete</item>
-                    <item name="urlEntityParamName" xsi:type="string">id</item>
-                    <item name="sortOrder" xsi:type="number">50</item>
-                </item>
-            </argument>
-        </actionsColumn>
     </columns>
 </listing>

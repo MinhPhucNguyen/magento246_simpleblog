@@ -14,6 +14,9 @@
                 <item name="tigren_simpleblog_category_listing_data_source" xsi:type="string">
                     Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
                 </item>
+                <item name="tigren_simpleblog_blog_listing_data_source" xsi:type="string">
+                    Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
+                </item>
                 <item name="tigren_simpleblog_category_form_data_source" xsi:type="string">
                     Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
                 </item>
@@ -26,6 +29,13 @@
             <argument name="mainTable" xsi:type="string">blog_categories</argument>
             <argument name="resourceModel" xsi:type="string">
                 Tigren\SimpleBlog\Model\ResourceModel\Category
+            </argument>
+        </arguments>
+
+        <arguments>
+            <argument name="mainTable" xsi:type="string">blog_post</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Tigren\SimpleBlog\Model\ResourceModel\Blog
             </argument>
         </arguments>
     </virtualType>

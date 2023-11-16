@@ -29,6 +29,7 @@
         <column xsi:type="int" name="category_id" unsigned="true" nullable="false" comment="Category Id"/>
         <column xsi:type="text" name="title" nullable="false" comment="Title"/>
         <column xsi:type="text" name="post_image" nullable="true" comment="Post Image"/>
+        <column xsi:type="text" name="image_list" nullable="true" comment="Image List"/>
         <column xsi:type="text" name="full_content" nullable="true" comment="Full Content"/>
         <column xsi:type="text" name="short_content" nullable="true" comment="Short Content"/>
         <column xsi:type="text" name="author" nullable="true" comment="Author"/>

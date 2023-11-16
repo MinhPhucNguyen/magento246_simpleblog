@@ -9,6 +9,7 @@
 
 namespace Tigren\SimpleBlog\Ui\Component\Listing\Column\Category;
 
+use Magento\Framework\Escaper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -32,6 +33,7 @@ class Actions extends Column
         ContextInterface   $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface       $urlBuilder,
+        private Escaper    $escaper,
         array              $components = [],
         array              $data = []
     )
@@ -54,12 +56,13 @@ class Actions extends Column
                         'href' => $this->getEditUrl($item),
                         'label' => __('Edit'),
                     ];
+                    $title = $this->escaper->escapeHtml($item['name']);
                     $item[$name]['delete'] = [
                         'href' => $this->getDeleteUrl($item),
                         'label' => __('Delete'),
                         'confirm' => [
-                            'title' => __('Delete %1', $item['category_id']),
-                            'message' => __('Are you sure you wan\'t to delete a %1 record?', $item['category_id']),
+                            'title' => __('Delete %1', $title),
+                            'message' => __('Are you sure you wan\'t to delete a %1 record?', $title),
                         ],
                     ];
                 }
