@@ -11,18 +11,25 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
+
                 <item name="tigren_simpleblog_category_listing_data_source" xsi:type="string">
-                    Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
-                </item>
-                <item name="tigren_simpleblog_blog_listing_data_source" xsi:type="string">
                     Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
                 </item>
                 <item name="tigren_simpleblog_category_form_data_source" xsi:type="string">
                     Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
                 </item>
+
+                <item name="tigren_simpleblog_blog_listing_data_source" xsi:type="string">
+                    Tigren\SimpleBlog\Model\ResourceModel\Blog\Grid\Collection
+                </item>
+                <item name="tigren_simpleblog_blog_form_data_source" xsi:type="string">
+                    Tigren\SimpleBlog\Model\ResourceModel\Blog\Grid\Collection
+                </item>
+
             </argument>
         </arguments>
     </type>
+    
     <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
@@ -31,7 +38,10 @@
                 Tigren\SimpleBlog\Model\ResourceModel\Category
             </argument>
         </arguments>
+    </virtualType>
 
+    <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\Blog\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">blog_post</argument>
             <argument name="resourceModel" xsi:type="string">

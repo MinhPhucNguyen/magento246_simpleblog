@@ -26,10 +26,9 @@ class Delete extends Action implements HttpPostActionInterface
         parent::__construct($context);
     }
 
-    public function execute(): ResultInterface
+    public function execute()
     {
-        $categoryId = (int)$this->getRequest()->getParam('id');
-
+        $categoryId = (int)$this->getRequest()->getParam('category_id');
         $resultPage = $this->resultRedirectFactory->create();
 
         if (!$categoryId) {
@@ -40,8 +39,8 @@ class Delete extends Action implements HttpPostActionInterface
         $model = $this->categoryFactory->create();
 
         try {
-            $this->resource->load($model, $categoryId);
-            $this->resource->delete($model);
+            $model->load($categoryId);
+            $model->delete();
             $this->messageManager->addSuccessMessage(__('The category has been deleted'));
         } catch (Throwable $exception) {
             $this->messageManager->addErrorMessage($exception->getMessage());

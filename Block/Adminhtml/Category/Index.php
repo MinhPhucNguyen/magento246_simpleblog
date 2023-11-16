@@ -11,7 +11,7 @@ namespace Tigren\SimpleBlog\Block\Adminhtml\Category;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\Template\Context;
+use Magento\Backend\Block\Template\Context;
 use Tigren\SimpleBlog\Model\CategoryFactory;
 
 class Index extends Template

@@ -53,6 +53,6 @@ class Save extends Action
         } catch (Exception $e) {
             $this->messageManager->addErrorMessage($e, __('Something went wrong. Please try again'));
         }
-        return $resultPage->setPath('simpleblog/category/index');
+        return $resultPage->setPath('*/*/');
     }
 }

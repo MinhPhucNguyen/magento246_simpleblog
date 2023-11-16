@@ -43,15 +43,4 @@
                     onDelete="CASCADE"/>
     </table>
 
-    <table name="blog_image_list">
-        <column xsi:type="int" name="image_id" unsigned="true" nullable="false" identity="true" comment="Blog Id"/>
-        <column xsi:type="int" name="blog_id" unsigned="true" nullable="false" comment="Blog Id"/>
-        <column xsi:type="text" name="image" nullable="false" comment="Image"/>
-        <constraint xsi:type="primary" referenceId="PRIMARY">
-            <column name="image_id"/>
-        </constraint>
-        <constraint xsi:type="foreign" referenceId="TIGREN_BLOG_POST_BLOG_IMAGE_LIST" table="blog_image_list"
-                    column="blog_id" referenceTable="blog_post" referenceColumn="blog_id" onDelete="CASCADE"/>
-    </table>
-
 </schema>

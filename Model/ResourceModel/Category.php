@@ -9,11 +9,14 @@
 namespace Tigren\SimpleBlog\Model\ResourceModel;
 
 
-class Category extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\Model\ResourceModel\Db\Context;
+
+class Category extends AbstractDb
 {
 
     public function __construct(
-        \Magento\Framework\Model\ResourceModel\Db\Context $context
+        Context $context
     )
     {
         parent::__construct($context);
@@ -23,5 +26,4 @@ class Category extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init('blog_categories', 'category_id');
     }
-
 }

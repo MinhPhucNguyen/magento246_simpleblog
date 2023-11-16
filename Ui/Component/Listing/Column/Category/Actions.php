@@ -64,6 +64,7 @@ class Actions extends Column
                             'title' => __('Delete %1', $title),
                             'message' => __('Are you sure you wan\'t to delete a %1 record?', $title),
                         ],
+                        'post' => true,
                     ];
                 }
             }
@@ -77,7 +78,7 @@ class Actions extends Column
      */
     private function getEditUrl(array $item)
     {
-        return $this->urlBuilder->getUrl(self::URL_PATH_EDIT, ['id' => $item['category_id']]);
+        return $this->urlBuilder->getUrl(self::URL_PATH_EDIT, ['category_id' => $item['category_id']]);
     }
 
     /**
@@ -86,6 +87,6 @@ class Actions extends Column
      */
     private function getDeleteUrl(array $item)
     {
-        return $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['id' => $item['category_id']]);
+        return $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['category_id' => $item['category_id']]);
     }
 }
