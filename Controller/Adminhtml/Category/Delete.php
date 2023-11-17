@@ -13,14 +13,12 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Throwable;
 use Tigren\SimpleBlog\Model\CategoryFactory;
-use Tigren\SimpleBlog\Model\ResourceModel\Category as CategoryResource;
 
 class Delete extends Action implements HttpPostActionInterface
 {
     public function __construct(
-        Context                  $context,
-        private CategoryResource $resource,
-        private CategoryFactory  $categoryFactory
+        Context                 $context,
+        private CategoryFactory $categoryFactory
     )
     {
         parent::__construct($context);
@@ -28,7 +26,7 @@ class Delete extends Action implements HttpPostActionInterface
 
     public function execute()
     {
-        $categoryId = (int)$this->getRequest()->getParam('category_id');
+        $categoryId = $this->getRequest()->getParam('category_id');
         $resultPage = $this->resultRedirectFactory->create();
 
         if (!$categoryId) {

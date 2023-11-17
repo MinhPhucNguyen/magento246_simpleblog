@@ -6,8 +6,7 @@
  *
  */
 
-
-namespace Tigren\SimpleBlog\Ui\Component\Listing\Column\Category;
+namespace Tigren\SimpleBlog\Ui\Component\Listing\Column\Blog;
 
 use Magento\Framework\Escaper;
 use Magento\Framework\UrlInterface;
@@ -19,8 +18,8 @@ class Actions extends Column
 {
     protected $urlBuilder;
 
-    private const  URL_PATH_EDIT = 'simpleblog/category/edit';
-    private const URL_PATH_DELETE = 'simpleblog/category/delete';
+    private const  URL_PATH_EDIT = 'simpleblog/blog/edit';
+    private const URL_PATH_DELETE = 'simpleblog/blog/delete';
 
     /**
      * @param ContextInterface $context
@@ -52,13 +51,17 @@ class Actions extends Column
             foreach ($dataSource['data']['items'] as &$item) {
 //                print_r($item);
 //                exit();
-                if (isset($item['category_id'])) {
+
+                if (isset($item['blog_id'])) {
+//                    print_r($item);
+//                    exit();
                     $name = $this->getData('name');
+
                     $item[$name]['edit'] = [
                         'href' => $this->getEditUrl($item),
                         'label' => __('Edit'),
                     ];
-                    $title = $this->escaper->escapeHtml($item['name']);
+                    $title = $this->escaper->escapeHtml($item['title']);
                     $item[$name]['delete'] = [
                         'href' => $this->getDeleteUrl($item),
                         'label' => __('Delete'),
@@ -80,7 +83,7 @@ class Actions extends Column
      */
     private function getEditUrl(array $item)
     {
-        return $this->urlBuilder->getUrl(self::URL_PATH_EDIT, ['category_id' => $item['category_id']]);
+        return $this->urlBuilder->getUrl(self::URL_PATH_EDIT, ['blog_id' => $item['blog_id']]);
     }
 
     /**
@@ -89,6 +92,6 @@ class Actions extends Column
      */
     private function getDeleteUrl(array $item)
     {
-        return $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['category_id' => $item['category_id']]);
+        return $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['blog_id' => $item['blog_id']]);
     }
 }

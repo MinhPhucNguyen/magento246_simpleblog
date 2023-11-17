@@ -26,7 +26,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
     public function getButtonData()
     {
         $data = [];
-        $id = $this->context->getRequest()->getParam('id');
+        $id = $this->context->getRequest()->getParam('category_id');
         if ($id) {
             $data = [
                 'label' => __('Delete'),
@@ -35,6 +35,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                         'Are you sure you want to delete this?'
                     ) . '\', \'' . $this->getDeleteUrl() . '\')',
                 'sort_order' => 20,
+                'post' => true,
             ];
         }
         return $data;
@@ -42,8 +43,10 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
 
     public function getDeleteUrl()
     {
-        $id = $this->context->getRequest()->getParam('id');
-        return $this->getUrl('*/*/delete', ['id' => $id]);
+        $id = $this->context->getRequest()->getParam('category_id');
+//        print_r($id);
+//        exit;
+        return $this->getUrl('*/*/delete', ['category_id' => $id]);
     }
 }
 

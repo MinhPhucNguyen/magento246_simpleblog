@@ -170,7 +170,7 @@
             </argument>
         </column>
 
-        <!--Add new colume name: action-->
+        <!--        Add new colume name: action-->
         <actionsColumn name="actions" class="Tigren\SimpleBlog\Ui\Component\Listing\Column\Category\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

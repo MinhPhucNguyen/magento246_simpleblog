@@ -40,7 +40,7 @@ class Category extends AbstractModel implements CategoryInterface
 
     public function getId()
     {
-        return $this->getData(self::ID);
+        return $this->getData(self::CATEGORY_ID);
     }
 
     /**
@@ -48,7 +48,7 @@ class Category extends AbstractModel implements CategoryInterface
      */
     public function setId($id)
     {
-        return $this->setData(self::ID, $id);
+        return $this->setData(self::CATEGORY_ID, $id);
     }
 
     /**

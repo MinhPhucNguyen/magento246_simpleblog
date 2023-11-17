@@ -13,7 +13,6 @@ use Tigren\SimpleBlog\Api\Data\BlogInterface;
 
 class Blog extends AbstractModel implements BlogInterface
 {
-    protected $_idFieldName = 'blog_id';
 
     protected function _construct()
     {
@@ -33,7 +32,7 @@ class Blog extends AbstractModel implements BlogInterface
 
     public function getId()
     {
-        return $this->getData(self::ID);
+        return $this->getData(self::BLOG_ID);
     }
 
     /**
@@ -41,7 +40,7 @@ class Blog extends AbstractModel implements BlogInterface
      */
     public function setId($id)
     {
-        return $this->setData(self::ID, $id);
+        return $this->setData(self::BLOG_ID, $id);
     }
 
     public function getTitle()

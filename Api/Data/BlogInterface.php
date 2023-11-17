@@ -11,7 +11,7 @@ namespace Tigren\SimpleBlog\Api\Data;
 interface BlogInterface
 {
     const BLOG_ID = 'blog_id';
-    const ID = 'id';
+    
     const TITLE = 'title';
     const SHORT_CONTENT = 'short_content';
     const FULL_CONTENT = 'full_content';

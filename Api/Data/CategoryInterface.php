@@ -13,7 +13,6 @@ interface CategoryInterface
     const CREATE_AT = 'create_at';
     const UPDATE_AT = 'update_at';
     const CATEGORY_ID = 'category_id';
-    const ID = 'id';
 
     const NAME = 'name';
     const DESCRIPTION = 'description';
