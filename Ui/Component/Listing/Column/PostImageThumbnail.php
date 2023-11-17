@@ -15,7 +15,7 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Tigren\SimpleBlog\Helper\Image;
 
-class Thumbnail extends Column
+class PostImageThumbnail extends Column
 {
     const NAME = 'thumbnail';
 

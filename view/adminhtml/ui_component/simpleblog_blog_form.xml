@@ -58,6 +58,7 @@
             </item>
         </argument>
     </dataSource>
+
     <fieldset name="general_information">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
@@ -173,6 +174,32 @@
                         <maxFileSize>2097152</maxFileSize>
                         <uploaderConfig>
                             <param xsi:type="string" name="url">*/*/imageupload</param>
+                        </uploaderConfig>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+
+
+        <field name="image_list" formElement="imageUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">post</item>
+                </item>
+            </argument>
+            <settings>
+                <notice translate="true">Some notice.</notice>
+                <label translate="true">Image List</label>
+                <componentType>imageUploader</componentType>
+                <visible>true</visible>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">*/*/imagelistupload</param>
                         </uploaderConfig>
                     </settings>
                 </imageUploader>

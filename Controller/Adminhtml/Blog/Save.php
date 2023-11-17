@@ -56,6 +56,13 @@ class Save extends Action
                     $imageName = $data['post_image'][0]['file'];
                     $model->setData('post_image', $imageName);
                 }
+
+
+                if (isset($data['image_list']) && !empty($data['image_list'][0]['file'])) {
+                    $imageName = $data['image_list'][0]['file'];
+                    $model->setData('image_list', $imageName);
+                }
+
                 $model->save();
 
                 $this->messageManager->addSuccessMessage(__("Create new blog successfully."));

@@ -12,9 +12,9 @@ namespace Tigren\SimpleBlog\Helper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\Filesystem;
 
-class Image
+class ImageList
 {
-    protected $subDir1 = 'simpleblog/blog/post_image/';
+    protected $subDir = 'simpleblog/blog/image_list/';
 
     protected $urlBuilder;
 
@@ -35,6 +35,6 @@ class Image
 //        print_r($this->urlBuilder->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]) . $this->subDir);
 //        exit();
 
-        return $this->urlBuilder->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]) . $this->subDir1;
+        return $this->urlBuilder->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]) . $this->subDir;
     }
 }
