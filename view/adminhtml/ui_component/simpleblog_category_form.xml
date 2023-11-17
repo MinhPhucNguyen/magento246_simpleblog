@@ -39,24 +39,35 @@
     </argument>
 
     <dataSource name="tigren_simpleblog_category_form_data_source">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">
-                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
-            </argument>
-            <argument name="name" xsi:type="string">tigren_simpleblog_category_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">category_id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
-                </item>
-            </argument>
-        </argument>
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
+
+        <!--        <argument name="dataProvider" xsi:type="configurableObject">-->
+        <!--            <argument name="class" xsi:type="string">-->
+        <!--                &lt;!&ndash;                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider&ndash;&gt;-->
+        <!--                Tigren\SimpleBlog\Model\Category\DataProvider-->
+        <!--            </argument>-->
+        <!--            <argument name="name" xsi:type="string">tigren_simpleblog_category_form_data_source</argument>-->
+        <!--            <argument name="primaryFieldName" xsi:type="string">category_id</argument>-->
+        <!--            <argument name="requestFieldName" xsi:type="string">id</argument>-->
+        <!--            <argument name="data" xsi:type="array">-->
+        <!--                <item name="config" xsi:type="array">-->
+        <!--                    <item name="submit_url" xsi:type="url" path="*/*/save"/>-->
+        <!--                </item>-->
+        <!--            </argument>-->
+        <!--        </argument>-->
+        <dataProvider class="Tigren\SimpleBlog\Model\Category\DataProvider"
+                      name="tigren_simpleblog_category_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>category_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+
+
     </dataSource>
     <fieldset name="general_information">
         <argument name="data" xsi:type="array">
@@ -109,6 +120,8 @@
                     <item name="rows" xsi:type="number">10</item>
                     <item name="label" translate="true" xsi:type="string">Description</item>
                     <item name="dataType" translate="true" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="dataScope" xsi:type="string">description</item>
                 </item>
             </argument>
         </field>

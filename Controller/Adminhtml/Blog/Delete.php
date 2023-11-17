@@ -66,15 +66,12 @@ class Delete extends Action implements HttpPostActionInterface
             } else {
                 if ($fileNamePostImage !== "") {
                     $mediaPath = $mediaBlogPath . 'post_image/' . $fileNamePostImage;
-                    if ($this->file->isExists($mediaPath)) {
-                        $this->file->deleteFile($mediaPath);
-                    }
+                    $this->deleteFileImage($mediaPath);
+                   
                 }
                 if ($fileNameImageList !== "") {
                     $mediaPath = $mediaBlogPath . 'image_list/' . $fileNameImageList;
-                    if ($this->file->isExists($mediaPath)) {
-                        $this->file->deleteFile($mediaPath);
-                    }
+                    $this->deleteFileImage($mediaPath);
                 }
                 $model->delete();
             }
@@ -85,6 +82,13 @@ class Delete extends Action implements HttpPostActionInterface
         }
 
         return $resultPage->setPath('*/*/');
+    }
+
+    protected function deleteFileImage($mediaPath)
+    {
+        if ($this->file->isExists($mediaPath)) {
+            $this->file->deleteFile($mediaPath);
+        }
     }
 }
 
