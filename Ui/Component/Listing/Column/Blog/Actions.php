@@ -53,8 +53,6 @@ class Actions extends Column
 //                exit();
 
                 if (isset($item['blog_id'])) {
-//                    print_r($item);
-//                    exit();
                     $name = $this->getData('name');
 
                     $item[$name]['edit'] = [

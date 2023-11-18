@@ -57,4 +57,18 @@
             </argument>
         </arguments>
     </virtualType>
+
+    <virtualType name="blogImageUploader"
+                 type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">path/to/upload/tmp</argument>
+            <argument name="basePath" xsi:type="string">path/to/upload</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
 </config>

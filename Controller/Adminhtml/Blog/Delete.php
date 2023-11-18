@@ -51,7 +51,7 @@ class Delete extends Action implements HttpPostActionInterface
         $model = $this->blogFactory->create();
 
 //        Get media path
-        $mediaBlogPath = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath() . '/simpleblog/blog/';
+        $mediaBlogPath = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath() . 'simpleblog/blog/';
 
         try {
             $model->load($blogId);
@@ -67,7 +67,7 @@ class Delete extends Action implements HttpPostActionInterface
                 if ($fileNamePostImage !== "") {
                     $mediaPath = $mediaBlogPath . 'post_image/' . $fileNamePostImage;
                     $this->deleteFileImage($mediaPath);
-                   
+
                 }
                 if ($fileNameImageList !== "") {
                     $mediaPath = $mediaBlogPath . 'image_list/' . $fileNameImageList;

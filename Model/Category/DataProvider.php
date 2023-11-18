@@ -6,9 +6,7 @@
  *
  */
 
-
 namespace Tigren\SimpleBlog\Model\Category;
-
 
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Tigren\SimpleBlog\Model\ResourceModel\Category\CollectionFactory;

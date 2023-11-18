@@ -47,7 +47,6 @@
 
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">
-                <!--                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider-->
                 Tigren\SimpleBlog\Model\Category\DataProvider
             </argument>
             <argument name="name" xsi:type="string">tigren_simpleblog_category_form_data_source</argument>
