@@ -45,7 +45,7 @@ class ImageListUpload extends Action implements HttpPostActionInterface
     public function execute()
     {
 
-        //  trả về dữ liệu dạng json
+        //  return json type
         $jsonResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         try {
