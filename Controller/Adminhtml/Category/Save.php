@@ -43,12 +43,20 @@ class Save extends Action
         $data = $this->getRequest()->getPostValue();
 //        print_r($data);
 //        die();
+
+        $id = $this->getRequest()->getParam('category_id');
+
         try {
             if ($data) {
-                $model = $this->categoryFactory->create();
-                $model->setData($data)->save();
+                if (isset($id)) {
+                    $model = $this->categoryFactory->create()->load($id);
+                    $model->setData($data)->save();
+                } else {
+                    $model = $this->categoryFactory->create();
+                    $model->setData($data)->save();
+                }
                 $this->messageManager->addSuccessMessage(__("Create Category Successfully."));
-                return $resultPage->setPath('*/*/');
+//                return $resultPage->setPath('*/*/');
             }
         } catch (Exception $e) {
             $this->messageManager->addErrorMessage($e, __('Something went wrong. Please try again'));

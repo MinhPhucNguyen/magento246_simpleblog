@@ -14,8 +14,6 @@ use Tigren\SimpleBlog\Api\Data\CategoryInterface;
 
 class Category extends AbstractModel implements CategoryInterface
 {
-    protected $_idFieldName = 'category_id';
-
     protected function _construct()
     {
         return $this->_init('Tigren\SimpleBlog\Model\ResourceModel\Category');

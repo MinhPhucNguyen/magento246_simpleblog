@@ -36,6 +36,7 @@ class DataProvider extends AbstractDataProvider
             return $this->loadedData;
         }
         $items = $this->collection->getItems();
+        $this->loadedData = [];
         foreach ($items as $category) {
             $this->loadedData[$category->getId()] = $category->getData();
         }
