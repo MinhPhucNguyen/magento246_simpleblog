@@ -72,7 +72,12 @@ $categories = $block->getCategoryList();
     })
 
     function displayBlogs(blogs) {
-        blogListContainer.innerHTML = ''; // Clear previous blogs
+        if (!blogs.length) {
+            blogListContainer.innerHTML = `<p>Don\'t have any blog in this category</p>`;
+            return;
+        }
+
+        blogListContainer.innerHTML = '';
         blogs.forEach(function (blog) {
             const blogItem = document.createElement('div');
             blogItem.classList.add('blog-item');
@@ -93,7 +98,7 @@ $categories = $block->getCategoryList();
                 <div class="read_more_btn">
                     <a href="<?= $block->getUrl('simpleblog/blog/blogdetail')?>blog_id/${blog.blog_id}">Read more</a>
                 </div>
-            ` // Replace 'title' with your blog field
+            ` // Replace 'title' with blog field
             blogListContainer.appendChild(blogItem);
         });
     }
