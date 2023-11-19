@@ -1,0 +1,57 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+$blogDetail = $block->getBlogDetail();
+?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?= $blogDetail['title'] ?></title>
+    <style>
+        div {
+            margin-bottom: 30px;
+        }
+
+        div .back_btn {
+            color: #e22626;
+            font-size: 20px;
+            font_weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .blog-detail {
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <a href="<?= $block->getUrl('simpleblog/blog/index') ?>" class="back_btn">Back</a>
+</div>
+<div class="blog-detail">
+
+    <p><strong>Publised At: </strong><?= $blogDetail['published_at'] ?></p>
+    <p><strong>Category: </strong><?= $blogDetail['category_id'] ?></p>
+    <strong>Post Image</strong>
+    <img src="<?= $block->getImageSrc('post_image', $blogDetail['post_image']) ?>" alt="<?= $blogDetail['title'] ?>"
+         width="300px" height="300px">
+    <p><strong>Short Content: </strong><?= $blogDetail['short_content'] ?></p>
+    <p><strong>Full Content: </strong><?= $blogDetail['full_content'] ?></p>
+    <strong>Image List</strong>
+    <img src="<?= $block->getImageSrc('image_list', $blogDetail['image_list']) ?>" alt="<?= $blogDetail['title'] ?>"
+         width="300px" height="300px">
+</div>
+</body>
+</html>

@@ -25,7 +25,6 @@ $categories = $block->getCategoryList();
         }
 
         .blog-item {
-            cursor: pointer;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             display: inline-block;
@@ -82,7 +81,7 @@ $categories = $block->getCategoryList();
                 <strong>Title: </strong>
                 <span>${blog.title}</span>
                 <br>
-                <strong>Content: </strong>
+                <strong>Short Content: </strong>
                 <span>${blog.short_content}</span>
                 <br>
                 <strong>Author: </strong>
@@ -92,7 +91,7 @@ $categories = $block->getCategoryList();
                 <span>${blog.published_at}</span>
 
                 <div class="read_more_btn">
-                    <a href="/">Read more</a>
+                    <a href="<?= $block->getUrl('simpleblog/blog/blogdetail')?>blog_id/${blog.blog_id}">Read more</a>
                 </div>
             ` // Replace 'title' with your blog field
             blogListContainer.appendChild(blogItem);
