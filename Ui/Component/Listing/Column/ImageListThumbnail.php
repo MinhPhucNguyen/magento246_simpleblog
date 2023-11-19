@@ -8,12 +8,10 @@
 
 namespace Tigren\SimpleBlog\Ui\Component\Listing\Column;
 
-use Magento\Framework\DataObject;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Tigren\SimpleBlog\Helper\Image;
 use Tigren\SimpleBlog\Helper\ImageList;
 
 class ImageListThumbnail extends Column

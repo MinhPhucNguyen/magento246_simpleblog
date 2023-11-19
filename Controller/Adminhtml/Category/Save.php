@@ -41,22 +41,21 @@ class Save extends Action
 
 //        Get data input from category form
         $data = $this->getRequest()->getPostValue();
-//        print_r($data);
-//        die();
 
-        $id = $this->getRequest()->getParam('category_id');
+        $categoryId = $this->getRequest()->getParam('category_id');
 
         try {
             if ($data) {
-                if (isset($id)) {
-                    $model = $this->categoryFactory->create()->load($id);
+                if (isset($categoryId)) {
+                    //update category
+                    $model = $this->categoryFactory->create()->load($categoryId);
                     $model->setData($data)->save();
+                    $this->messageManager->addSuccessMessage(__("Updated Category Successfully."));
                 } else {
                     $model = $this->categoryFactory->create();
                     $model->setData($data)->save();
+                    $this->messageManager->addSuccessMessage(__("Create Category Successfully."));
                 }
-                $this->messageManager->addSuccessMessage(__("Create Category Successfully."));
-//                return $resultPage->setPath('*/*/');
             }
         } catch (Exception $e) {
             $this->messageManager->addErrorMessage($e, __('Something went wrong. Please try again'));
