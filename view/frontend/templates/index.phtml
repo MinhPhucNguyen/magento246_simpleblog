@@ -1,1 +1,107 @@
-<h2>Welcome to Mageplaza.com</h2>
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+$categories = $block->getCategoryList();
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #blog-list-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-item {
+            cursor: pointer;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 20px 40px;
+        }
+
+        .read_more_btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<select name="category" id="category">
+    <option value="">Select Category...</option>
+    <?php foreach ($categories as $category) : ?>
+        <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+    <?php endforeach; ?>
+</select>
+<div id="blog-list-container">
+</div>
+
+<script>
+    const category = document.querySelector('#category');
+    const blogListContainer = document.querySelector('#blog-list-container');
+
+    category.addEventListener('change', function () {
+        const categoryId = this.value;
+        // console.log(categoryId);
+
+        if (categoryId) {
+            var url = '<?= $block->getUrl('simpleblog/blog/getblogsbycategory') ?>';
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    const blogs = JSON.parse(this.responseText);
+                    console.log(blogs);
+                    displayBlogs(blogs)
+                }
+            }
+            xhr.open("GET", url + 'category_id/' + categoryId, true);
+            xhr.send();
+        } else {
+            blogListContainer.innerHTML = '';
+        }
+    })
+
+    function displayBlogs(blogs) {
+        blogListContainer.innerHTML = ''; // Clear previous blogs
+        blogs.forEach(function (blog) {
+            const blogItem = document.createElement('div');
+            blogItem.classList.add('blog-item');
+            blogItem.innerHTML =
+                `
+                <strong>Title: </strong>
+                <span>${blog.title}</span>
+                <br>
+                <strong>Content: </strong>
+                <span>${blog.short_content}</span>
+                <br>
+                <strong>Author: </strong>
+                <span>${blog.author}</span>
+                <br>
+                <strong>Published at: </strong>
+                <span>${blog.published_at}</span>
+
+                <div class="read_more_btn">
+                    <a href="/">Read more</a>
+                </div>
+            ` // Replace 'title' with your blog field
+            blogListContainer.appendChild(blogItem);
+        });
+    }
+</script>
+
+</body>
+</html>
+
+
+
