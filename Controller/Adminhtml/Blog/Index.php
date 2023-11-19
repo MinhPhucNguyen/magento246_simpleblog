@@ -9,7 +9,7 @@
 namespace Tigren\SimpleBlog\Controller\Adminhtml\Blog;
 
 use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\Context;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;

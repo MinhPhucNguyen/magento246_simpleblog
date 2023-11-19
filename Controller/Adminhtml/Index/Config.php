@@ -9,7 +9,7 @@
 namespace Tigren\SimpleBlog\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\Context;
+use Magento\Backend\App\Action\Context;
 use Tigren\HelloWorld\Helper\Data;
 
 class Config extends Action

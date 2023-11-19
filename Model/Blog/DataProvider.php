@@ -17,7 +17,6 @@ use Magento\Framework\UrlInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Tigren\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory;
-use Tigren\SimpleBlog\Model\PostFactory;
 use Magento\Framework\Filesystem\Driver\File\Mime;
 
 class DataProvider extends AbstractDataProvider
@@ -49,6 +48,7 @@ class DataProvider extends AbstractDataProvider
     {
         $this->collection = $blogCollectionFactory->create();
         $this->mediaDirectory = $fileSystem->getDirectoryRead(DirectoryList::MEDIA);
+        $this->storeManager = $this->storeManager;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 

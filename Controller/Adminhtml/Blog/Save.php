@@ -70,28 +70,48 @@ class Save extends Action
                 if (isset($blogId)) {
                     $model = $this->blogFactory->create()->load($blogId);
 
+                    $model->setData('title', $data['title']);
+                    $model->setData('full_content', $data['full_content']);
+                    $model->setData('short_content', $data['short_content']);
+                    $model->setData('author', $data['author']);
+                    $model->setData('status', $data['status']);
+                    $model->setData('category_id', $data['category_id']);
+
+                    $model->save();
+
+                    //get current image
                     $currentPostImage = $model->getData('post_image');
                     $currentImageList = $model->getData('image_list');
 
-                    $fileNamePostImage = $this->getFileNameFromUrl->getFileName($data['post_image'][0]['url']);
-                    $postImagePath = $mediaBlogPath . 'post_image/' . $fileNamePostImage;
-                    if ($currentPostImage !== $fileNamePostImage) {
-                        $this->file->deleteFile($mediaBlogPath . 'post_image/' . $currentPostImage);
-                        $model->setData('post_image', $fileNamePostImage);
-                    } else {
-                        unset($data['post_image']);
+                    if (isset($data['post_image'][0]['name']) && isset($data['post_image'][0]['tmp_name'])) {
+                        $newPostImageName = $data['post_image'][0]['file'];
+                        $newPostImagePath = $mediaBlogPath . 'post_image/' . $newPostImageName;
+
+                        if ($currentPostImage !== $newPostImageName) {
+                            $this->file->deleteFile($mediaBlogPath . 'post_image/' . $currentPostImage);
+
+                            $model->setData('post_image', $newPostImageName);
+                            $model->save();
+                        } else {
+                            unset($data['post_image']);
+                        }
                     }
 
-                    $fileNameImageList = $this->getFileNameFromUrl->getFileName($data['image_list'][0]['url']);
-                    $imageListPath = $mediaBlogPath . 'image_list/' . $fileNameImageList;
-                    if ($currentImageList !== $fileNameImageList) {
-                        $this->file->deleteFile($mediaBlogPath . 'image_list/' . $currentImageList);
-                        $model->setData('image_list', $fileNameImageList);
-                    } else {
-                        unset($data['image_list']);
+                    if (isset($data['image_list'][0]['name']) && isset($data['image_list'][0]['tmp_name'])) {
+                        $newImageListName = $data['image_list'][0]['file'];
+                        $newImageListPath = $mediaBlogPath . 'image_list/' . $newImageListName;
+
+                        if ($currentImageList !== $newImageListName) {
+                            $this->file->deleteFile($mediaBlogPath . 'image_list/' . $currentImageList);
+
+                            $model->setData('image_list', $newImageListName);
+                            $model->save();
+                        } else {
+                            unset($data['image_list']);
+                        }
                     }
 
-                    $model->setData($data)->save();
+                    $model->save();
 
                     $this->messageManager->addSuccessMessage(__("Updated blog successfully."));
 

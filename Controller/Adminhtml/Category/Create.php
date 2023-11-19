@@ -10,7 +10,7 @@
 namespace Tigren\SimpleBlog\Controller\Adminhtml\Category;
 
 use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\Context;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
 class Create extends Action
@@ -19,8 +19,8 @@ class Create extends Action
 
     public function __construct(Context $context, PageFactory $pageFactory)
     {
-        parent::__construct($context);
         $this->pageFactory = $pageFactory;
+        parent::__construct($context);
     }
 
     public function execute()
