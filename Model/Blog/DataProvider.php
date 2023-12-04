@@ -1,7 +1,7 @@
 <?php
 /*
  * @author    Tigren Solutions <info@tigren.com>
- * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
  * @license   Open Software License ("OSL") v. 3.0
  *
  */
@@ -25,9 +25,9 @@ class DataProvider extends AbstractDataProvider
     private ReadInterface $mediaDirectory;
 
     /**
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param Filesystem $fileSystem
      * @param CollectionFactory $blogCollectionFactory
      * @param StoreManagerInterface $storeManager
@@ -48,7 +48,6 @@ class DataProvider extends AbstractDataProvider
     {
         $this->collection = $blogCollectionFactory->create();
         $this->mediaDirectory = $fileSystem->getDirectoryRead(DirectoryList::MEDIA);
-        $this->storeManager = $this->storeManager;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 

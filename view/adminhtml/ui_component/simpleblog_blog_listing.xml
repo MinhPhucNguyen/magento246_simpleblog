@@ -90,6 +90,7 @@
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">55</item>
                     <item name="indexField" xsi:type="string">blog_id</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
                 </item>
             </argument>
         </selectionsColumn>
@@ -100,7 +101,7 @@
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
-                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>
         </column>
@@ -115,8 +116,8 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Category</item>
-                    <item name="sortOrder" xsi:type="number">20</item>
                 </item>
+                <item name="sortOrder" xsi:type="number">40</item>
             </argument>
         </column>
 
@@ -130,7 +131,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
-                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
                 </item>
             </argument>
         </column>
@@ -143,7 +144,7 @@
                     <item name="altField" xsi:type="string">name</item>
                     <item name="has_preview" xsi:type="string">1</item>
                     <item name="label" xsi:type="string" translate="true">Image</item>
-                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
                 </item>
             </argument>
         </column>
@@ -156,7 +157,7 @@
                     <item name="altField" xsi:type="string">name</item>
                     <item name="has_preview" xsi:type="string">1</item>
                     <item name="label" xsi:type="string" translate="true">Image List</item>
-                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="sortOrder" xsi:type="number">100</item>
                 </item>
             </argument>
         </column>
@@ -171,7 +172,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Full Content</item>
-                    <item name="sortOrder" xsi:type="number">80</item>
+                    <item name="sortOrder" xsi:type="number">120</item>
                 </item>
             </argument>
         </column>
@@ -186,7 +187,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Short Content</item>
-                    <item name="sortOrder" xsi:type="number">100</item>
+                    <item name="sortOrder" xsi:type="number">140</item>
                 </item>
             </argument>
         </column>
@@ -201,7 +202,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Author</item>
-                    <item name="sortOrder" xsi:type="number">120</item>
+                    <item name="sortOrder" xsi:type="number">180</item>
                 </item>
             </argument>
         </column>
@@ -216,7 +217,7 @@
                         </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Status</item>
-                    <item name="sortOrder" xsi:type="number">500</item>
+                    <item name="sortOrder" xsi:type="number">200</item>
                 </item>
             </argument>
         </column>
@@ -228,7 +229,7 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="label" xsi:type="string" translate="true">Published At</item>
-                    <item name="sortOrder" xsi:type="number">160</item>
+                    <item name="sortOrder" xsi:type="number">220</item>
                 </item>
             </argument>
         </column>
@@ -240,7 +241,7 @@
                     <item name="indexField" xsi:type="string">blog_id</item>
                     <item name="viewUrlPath" xsi:type="string">blogmanager/manage/delete</item>
                     <item name="urlEntityParamName" xsi:type="string">id</item>
-                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="sortOrder" xsi:type="number">240</item>
                 </item>
             </argument>
         </actionsColumn>

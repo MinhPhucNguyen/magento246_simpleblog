@@ -25,7 +25,6 @@ class Save extends Action
     protected $pageFactory = false;
     protected $blogFactory;
     protected $formKeyValidator;
-
     protected $getFileNameFromUrl;
 
     protected $file;

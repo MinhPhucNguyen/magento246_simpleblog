@@ -1,13 +1,15 @@
 <?xml version="1.0"  ?>
 <!--
   ~ @author    Tigren Solutions <info@tigren.com>
-  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
   ~ @license   Open Software License ("OSL") v. 3.0
   ~
   -->
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <!--UI component-->
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -71,4 +73,10 @@
             </argument>
         </arguments>
     </virtualType>
+
+
+    <!--    Declare Plugin-->
+    <!--    <type name="{ObservedType}">-->
+    <!--        <plugin name="{pluginName}" type="{PluginClassName}" sortOrder="1" disabled="false"/>-->
+    <!--    </type>-->
 </config>

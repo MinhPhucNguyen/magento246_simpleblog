@@ -1,0 +1,30 @@
+type Query {
+    getBlogs: [Blog]
+    @cache(cacheIdentity: "Tigren\\SimpleBlog\\Model\\Resolver\\Block\\Identity")
+    @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Blog")
+
+    getCategories: [Category]
+    @cache(cacheIdentity: "Tigren\\SimpleBlog\\Model\\Resolver\\Block\\Identity")
+    @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Category")
+}
+
+type Blog {
+    blog_id: ID!
+    title: String
+    author: String
+    short_content: String
+    full_content: String
+    post_image: String
+    image_list: String
+    published_at: String
+    status: Int
+}
+
+type Category {
+    category_id: ID!
+    name: String
+    description: String
+    status: Int
+    created_at: String
+    updated_at: String
+}
