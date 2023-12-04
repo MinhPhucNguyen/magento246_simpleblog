@@ -8,8 +8,19 @@ type Query {
     @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Category")
 }
 
+type Mutation {
+    createNewBlog(input: BlogInput): Blog @doc(description: "Create new blog")
+}
+
+input BlogInput {
+    name: String!
+    description: String
+    status: Int
+}
+
 type Blog {
     blog_id: ID!
+    category_id: ID
     title: String
     author: String
     short_content: String
