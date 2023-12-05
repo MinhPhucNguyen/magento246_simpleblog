@@ -6,25 +6,25 @@
  *
  */
 
-namespace Tigren\SimpleBlog\Model\Resolver;
+namespace Tigren\SimpleBlog\Model\Resolver\Category;
 
 
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Tigren\SimpleBlog\Model\ResourceModel\Blog\CollectionFactory;
+use Tigren\SimpleBlog\Model\ResourceModel\Category\CollectionFactory;
 
-class Blog implements ResolverInterface
+class Category implements ResolverInterface
 {
 
-    protected $blogCollectionFactory;
+    protected $categoryCollectionFactory;
 
 
     public function __construct(
-        CollectionFactory $blogCollectionFactory
+        CollectionFactory $categoryCollectionFactory
     )
     {
-        $this->blogCollectionFactory = $blogCollectionFactory;
+        $this->categoryCollectionFactory = $categoryCollectionFactory;
     }
 
     /**
@@ -37,14 +37,16 @@ class Blog implements ResolverInterface
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        return $this->getBlogs();
+        return $this->getCategories();
     }
 
-    private function getBlogs(): array
+    private function getCategories(): array
     {
-        $collection = $this->blogCollectionFactory->create();
+        $collection = $this->categoryCollectionFactory->create();
         $collection->addFieldToFilter('status', 1);
-        $collection->setOrder('published_at', 'DESC');
+        $collection->setOrder('created_at', 'DESC');
         return $collection->getData();
     }
 }
+
+
