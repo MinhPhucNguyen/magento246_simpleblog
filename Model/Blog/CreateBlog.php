@@ -9,32 +9,41 @@
 namespace Tigren\SimpleBlog\Model\Blog;
 
 
-use Tigren\SimpleBlog\Model\Blog;
-
-use Tigren\SimpleBlog\Model\BlogFactory;
+use Tigren\SimpleBlog\Model\ResourceModel\Blog;
 
 class CreateBlog
 {
-    private $blog;
-    private $blogFactory;
+    private \Tigren\SimpleBlog\Model\Blog $blog;
+    private Blog $resource;
 
     public function __construct(
-        Blog        $blog,
-        BlogFactory $blogFactory
+        \Tigren\SimpleBlog\Model\Blog $blog,
+        Blog                          $resource
     )
     {
         $this->blog = $blog;
-        $this->blogFactory = $blogFactory;
+        $this->resource = $resource;
     }
 
-    public function execute(array $postData)
+    public function execute(int $blogId, array $postData)
     {
         $this->validateData($postData);
 
-        $model = $this->blogFactory->create();
-        $model->setData($postData);
-        $model->save();
-        return $model->getData();
+        $blog = $this->blog;
+
+        if ($blogId) {
+            $this->resource->load($blog, $blogId);
+        }
+
+        $blog->setData($postData);
+        $this->resource->save($blog);
+
+        if ($blog->getId()) {
+            $this->resource->load($blog, $blog->getId());
+        }
+        return $blog;
+
+        return [];
     }
 
 

@@ -6,6 +6,14 @@ type Query {
     getCategories: [Category]
     @cache(cacheIdentity: "Tigren\\SimpleBlog\\Model\\Resolver\\Block\\Identity")
     @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Category\\Category")
+
+    getBlogById(
+        id: Int!
+        @doc(description: "Blog ID")
+    ): Blog
+    @cache(cacheIdentity: "Tigren\\SimpleBlog\\Model\\Resolver\\Block\\Identity")
+    @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Blog\\BlogById")
+    @doc(description: "Get blog by ID")
 }
 
 type Mutation {
@@ -23,11 +31,7 @@ type Mutation {
     @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Category\\CreateCategory")
     @doc(description: "Create new category")
 
-    deleteBlog(
-        blog_id: Int!
-        @doc(description: "Blog ID")
-    ): Blog
-    @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Blog\\DeleteBlog")
+
 }
 
 input createBlogInput {

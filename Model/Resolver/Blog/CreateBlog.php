@@ -31,7 +31,8 @@ class CreateBlog implements ResolverInterface
 
         $data = $args['input'];
 
-        $blog = $this->createBlog->execute($data);
+        $blog_id = isset($data['blog_id']) ? $data['blog_id'] : 0;
+        $blog = $this->createBlog->execute($blog_id, $data);
 
         $blogData = $blog;
 
