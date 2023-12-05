@@ -40,7 +40,7 @@ class DeleteCategory implements ResolverInterface
             $category->load($categoryId);
             $category->delete();
             return [
-                'message' => __('The category has been deleted.')
+                'message' => __('The category has been deleted successfully.')
             ];
         } catch (Throwable $e) {
             throw new GraphQlInputException(__($e->getMessage()));

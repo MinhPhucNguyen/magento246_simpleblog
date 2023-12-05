@@ -40,7 +40,7 @@ class DeleteBlog implements ResolverInterface
             $blog->load($blogId);
             $blog->delete();
             return [
-                'message' => __('The blog has been deleted.')
+                'message' => __('The blog has been deleted successfully.')
             ];
         } catch (Throwable $e) {
             throw new GraphQlInputException(__($e->getMessage()));
