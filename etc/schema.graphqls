@@ -32,6 +32,13 @@ type Mutation {
     @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Blog\\UpdateBlog")
     @doc(description: "Update blog")
 
+    deleteBlog(
+        blog_id: ID!
+        @doc(description: "Blog ID")
+    ): MessageResponse
+    @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Blog\\DeleteBlog")
+    @doc(description: "Delete blog")
+
     createCategory(
         input: createCategoryInput!
         @doc(description: "Category Input")
@@ -46,6 +53,17 @@ type Mutation {
     ): Category
     @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Category\\UpdateCategory")
     @doc(description: "Update category")
+
+    deleteCategory(
+        category_id: ID!
+        @doc(description: "Category ID")
+    ): MessageResponse
+    @resolver(class: "Tigren\\SimpleBlog\\Model\\Resolver\\Category\\DeleteCategory")
+    @doc(description: "Delete category")
+}
+
+type MessageResponse {
+    message: String
 }
 
 input createBlogInput {
