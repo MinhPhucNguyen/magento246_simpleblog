@@ -14,7 +14,7 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Tigren\SimpleBlog\Model\CategoryFactory;
 
-class CreateCategory implements ResolverInterface
+class UpdateCategory implements ResolverInterface
 {
     protected $categoryFactory;
 
@@ -32,8 +32,14 @@ class CreateCategory implements ResolverInterface
         $data = $args['input'];
 
         $category = $this->categoryFactory->create();
-        $category->setData($data);
-        $category->save();
+
+        $categoryId = $args['category_id'];
+
+        if (isset($categoryId)) {
+            $category->load($categoryId);
+            $category->addData($data);
+            $category->save();
+        }
 
         return [
             'category_id' => $category['category_id'],

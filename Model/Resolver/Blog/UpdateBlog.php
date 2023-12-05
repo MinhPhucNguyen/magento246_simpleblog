@@ -14,7 +14,7 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Tigren\SimpleBlog\Model\BlogFactory;
 
-class CreateBlog implements ResolverInterface
+class UpdateBlog implements ResolverInterface
 {
     protected $blogFactory;
 
@@ -31,10 +31,15 @@ class CreateBlog implements ResolverInterface
 
         $data = $args['input'];
 
+        $blogId = $args['blog_id'];
+
         $blog = $this->blogFactory->create();
-        $blog->setCategoryId($data['category_id']);
-        $blog->setData($data);
-        $blog->save();
+        if (isset($blogId)) {
+            $blog->load($blogId);
+            $blog->setCategoryId($data['category_id']);
+            $blog->addData($data);
+            $blog->save();
+        }
 
         return [
             'blog_id' => $blog['blog_id'],
